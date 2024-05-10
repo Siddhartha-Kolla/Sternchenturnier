@@ -33,11 +33,6 @@
   color: #61dafb;
 }
 
-.table {
-  height: 10vh;
-  padding: 20vh, 20vw;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -45,4 +40,36 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.table {
+  height: 40vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: white;
+}
+
+.team {
+  height: 19vh;
+  width: 14.5vw;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ }
+
+.player {
+  height: 19vh;
+  width: 7.075vw;
+  background-color: #35654d;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
