@@ -106,6 +106,15 @@
   font-family: Inter;
   }
 
+.end-button {
+  width: 95%;
+  height: 5vh;
+  background-color: #911924;
+  border-radius: 1vh;
+  color: white;
+  font-family: Inter;
+  }
+
 .points {
   width: 100%;
 }

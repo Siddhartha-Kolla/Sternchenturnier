@@ -114,7 +114,18 @@ function distributePlayers(players_num) {
 }
 
 function App() {
-  distributePlayers(16)
+
+  // Variables
+  let players = 16
+  let lock = false;
+  let end = false;
+  let game_end = false;
+  let player_board = distributePlayers(16);
+  let players_points = [];
+  for (let i=0;i<=players;i++) {
+    players_points.push(0);
+  }
+
   return (
     <div className="App">
       <header className="App-header flex bg-green-600">
@@ -133,6 +144,7 @@ function App() {
             <button className='button'>Generate</button>
             <button className='button'>End</button>
             <button className='button'>Lock</button>
+            <button className='end-button'>End Game</button>
             <PointTable/>
             <div className='points'></div>
           </Grid>
