@@ -2,31 +2,64 @@ import logo from './logo.svg';
 import './App.css';
 import Grid from '@mui/material/Grid';
 import Inter from '@fontsource/inter';
+import React, { useState } from 'react';
 
-function Table() {
+const Table = ({team1,team2}) => {
   return (
-    <div className='table bg-red-800'>
+    <div className='table'>
       <div className='team' draggable>
         <div className='player'>
-          <p>1</p>
+          <p>{team1[0]}</p>
         </div>
         <div className='player'>
-          <p>2</p>
+          <p>{team1[1]}</p>
         </div>
       </div>
       <div className='team' draggable>
         <div className='player'>
-          <p>3</p>
+          <p>{team2[0]}</p>
         </div>
         <div className='player'>
-          <p>4</p>
+          <p>{team2[1]}</p>
         </div>
       </div>
     </div>
   );
 }
 
-function PointTable(){
+const DynamicTables = () => {
+  const [tables, setTables] = useState([
+    { id: 1, team1: ['Player 1A', 'Player 1B'], team2: ['Player 2A', 'Player 2B'] },
+    { id: 2, team1: ['Player 3A', 'Player 3B'], team2: ['Player 4A', 'Player 4B'] },
+    { id: 2, team1: ['Player 3A', 'Player 3B'], team2: ['Player 4A', 'Player 4B'] },
+    { id: 2, team1: ['Player 3A', 'Player 3B'], team2: ['Player 4A', 'Player 4B'] },
+    { id: 2, team1: ['Player 3A', 'Player 3B'], team2: ['Player 4A', 'Player 4B'] },
+    { id: 2, team1: ['Player 3A', 'Player 3B'], team2: ['Player 4A', 'Player 4B'] },
+    { id: 2, team1: ['Player 3A', 'Player 3B'], team2: ['Player 4A', 'Player 4B'] },
+  ]);
+
+  const addTable = () => {
+    const newTable = { id: tables.length + 1, team1: ['New Player 1A', 'New Player 1B'], team2: ['New Player 2A', 'New Player 2B'] };
+    setTables([...tables, newTable]);
+  };
+
+  const updateTable = (id, newTeam1, newTeam2) => {
+    const updatedTables = tables.map(table =>
+      table.id === id ? { ...table, team1: newTeam1, team2: newTeam2 } : table
+    );
+    setTables(updatedTables);
+  };
+
+  return (
+    <div className='tables'>
+      {tables.map(table => (
+        <Table key={table.id} team1={table.team1} team2={table.team2} />
+      ))}
+    </div>
+  );
+};
+
+function PointTable() {
   return (
     <div className='points-table'>
       <div className='point_table'>
@@ -94,7 +127,7 @@ function distributePlayers(players_num) {
   }
 
 
-  for (let i=1;i <= players_num;i++) {
+  for (let i=1;i < players_num;i++) {
     var game = [];
     for (let x=1;x<= Math.floor(players_num/2);x++) {
       game.push([players_list[x-1],players_list.slice(x*(-1))[0]]);
@@ -120,10 +153,16 @@ function App() {
   let lock = false;
   let end = false;
   let game_end = false;
+  let round = 0;
   let player_board = distributePlayers(16);
+  player_board = player_board.sort((a, b) => 0.5 - Math.random());
   let players_points = [];
-  for (let i=0;i<=players;i++) {
+  for (let i=1;i<=players;i++) {
     players_points.push(0);
+  }
+  let play_order = [];
+  for(let i=0;i<(player_board[round].length/2);i++) {
+    play_order.push([player_board[round][2*i],player_board[round][2*i+1]])
   }
 
   return (
@@ -133,12 +172,8 @@ function App() {
       </header>
       <body className='App-body bg-black'>
         <Grid container>
-          <Grid item xs={8} className="bg-green-600 tables">
-            <Table/>
-            <Table/>
-            <Table/>
-            <Table/>
-            <Table/>
+          <Grid item xs={8} className="bg-green-600">
+            <DynamicTables/>
           </Grid>
           <Grid item xs={4} className='bg-green-600 control-panel'>
             <button className='button'>Generate</button>
