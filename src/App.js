@@ -96,7 +96,7 @@ const PlayerInput = ({ onSubmit }) => {
     <div className="player-input">
       <form onSubmit={handleSubmit}>
         <label>
-          Number of players:
+          Anzahl der Spieler:
           <input 
             type="number" 
             value={playerCount} 
@@ -105,7 +105,7 @@ const PlayerInput = ({ onSubmit }) => {
             step="4"
           />
         </label>
-        <button type="submit">Start</button>
+        <button type="submit">Starten</button>
       </form>
     </div>
     </div>
@@ -276,7 +276,7 @@ function App() {
     <html className="App">
       <title>Sternchenturnier</title>
       <header className="App-header flex">
-        <button className='button next-button' style={{ width: "5vw" , fontSize: "2.5vh" }} onClick={handleReset}>{"Back"}</button>
+        <button className='button next-button' style={{ width: "5vw" , fontSize: "2.5vh" }} onClick={handleReset}>{"Zurück"}</button>
         <img src={logo} className="App-logo" alt="logo" />
         <p>Round {play_round + 1}</p>
         <button onClick={appendRound} className='button next-button' style={{ width: "5vw" }}>{">"}</button>
@@ -297,9 +297,9 @@ function App() {
             ))}
           </Grid>
           <Grid item xs={4} className='bg-green-600 control-panel'>
-            <button className='button' onClick={anotherRound}>Another round</button>
-            <button className='button' onClick={handleRandomize} disabled={isLocked}>Randomize</button>
-            <button className='button' onClick={toggleLock}>{isLocked ? 'Unlock' : 'Lock'}</button>
+            <button className='button' onClick={anotherRound}>Nächste Runde</button>
+            <button className='button' onClick={handleRandomize} disabled={isLocked}>Würfeln</button>
+            <button className='button' onClick={toggleLock}>{isLocked ? 'Entsperren' : 'Sperren'}</button>
           </Grid>
         </Grid>
       </body>
