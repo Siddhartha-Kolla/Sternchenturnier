@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Sternchenturnier/static/css/main.c6369aba.css",
-    "main.js": "/Sternchenturnier/static/js/main.ae2eb389.js",
+    "main.js": "/Sternchenturnier/static/js/main.5591c737.js",
     "static/js/453.10f566cc.chunk.js": "/Sternchenturnier/static/js/453.10f566cc.chunk.js",
     "static/media/inter-latin-ext-400-normal.woff": "/Sternchenturnier/static/media/inter-latin-ext-400-normal.40b3b0d5e09a90fb6e3e.woff",
     "static/media/inter-latin-ext-400-normal.woff2": "/Sternchenturnier/static/media/inter-latin-ext-400-normal.0f9e8d4e940df8f6edfe.woff2",
@@ -20,11 +20,11 @@
     "static/media/inter-vietnamese-400-normal.woff2": "/Sternchenturnier/static/media/inter-vietnamese-400-normal.5952d3d3c5df5a2f8e09.woff2",
     "index.html": "/Sternchenturnier/index.html",
     "main.c6369aba.css.map": "/Sternchenturnier/static/css/main.c6369aba.css.map",
-    "main.ae2eb389.js.map": "/Sternchenturnier/static/js/main.ae2eb389.js.map",
+    "main.5591c737.js.map": "/Sternchenturnier/static/js/main.5591c737.js.map",
     "453.10f566cc.chunk.js.map": "/Sternchenturnier/static/js/453.10f566cc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c6369aba.css",
-    "static/js/main.ae2eb389.js"
+    "static/js/main.5591c737.js"
   ]
 }
