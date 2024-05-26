@@ -278,7 +278,7 @@ function App() {
       <header className="App-header flex">
         <button className='button next-button' style={{ width: "5vw" , fontSize: "2.5vh" }} onClick={handleReset}>{"Zurück"}</button>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Round {play_round + 1}</p>
+        <p>Runde {play_round + 1}</p>
         <button onClick={appendRound} className='button next-button' style={{ width: "5vw" }}>{">"}</button>
       </header>
       <body className='App-body bg-black'>
