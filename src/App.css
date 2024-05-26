@@ -175,3 +175,53 @@ code {
   font-weight: bold;
   /* border-radius: 1vh; */
 }
+
+.hello {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.player-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 80vh;
+  margin-right: 15vw;
+}
+
+.player-input form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.player-input label {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  color: white;
+}
+
+.player-input input {
+  padding: 0.5em;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  width: 300px;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+}
+
+.player-input button {
+  padding: 0.5em;
+  font-size: 1.2em;
+  width: 300px;
+  background-color: #3c638e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

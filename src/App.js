@@ -82,31 +82,111 @@ function shuffle(array) {
   return array;
 }
 
+const PlayerInput = ({ onSubmit }) => {
+  const [playerCount, setPlayerCount] = useState(16);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(playerCount);
+  };
+
+  return (
+    <div className='hello'>
+    <img src={logo} className="App-logo" alt="logo" />
+    <div className="player-input">
+      <form onSubmit={handleSubmit}>
+        <label>
+          Number of players:
+          <input 
+            type="number" 
+            value={playerCount} 
+            onChange={(e) => setPlayerCount(e.target.value)} 
+            min="4" 
+            step="4"
+          />
+        </label>
+        <button type="submit">Start</button>
+      </form>
+    </div>
+    </div>
+  );
+};
+
 function App() {
-  const [round, setRound] = useState(0);
-  const [play_round, setPlayRound] = useState(0);
-  const [tables, setTables] = useState([]);
+  const [players, setPlayers] = useState(() => {
+    const savedPlayers = localStorage.getItem('players');
+    return savedPlayers ? JSON.parse(savedPlayers) : null;
+  });
+  const [round, setRound] = useState(() => {
+    const savedRound = localStorage.getItem('round');
+    return savedRound ? JSON.parse(savedRound) : 0;
+  });
+  const [play_round, setPlayRound] = useState(() => {
+    const savedPlayRound = localStorage.getItem('play_round');
+    return savedPlayRound ? JSON.parse(savedPlayRound) : 0;
+  });
+  const [tables, setTables] = useState(() => {
+    const savedTables = localStorage.getItem('tables');
+    return savedTables ? JSON.parse(savedTables) : [];
+  });
   const [draggedIndex, setDraggedIndex] = useState(null);
   const [draggedHalf, setDraggedHalf] = useState(null);
-  const [isLocked, setIsLocked] = useState(false);
+  const [isLocked, setIsLocked] = useState(() => {
+    const savedIsLocked = localStorage.getItem('isLocked');
+    return savedIsLocked ? JSON.parse(savedIsLocked) : false;
+  });
 
-  const players = 24;
-  const player_board = useMemo(() => distributePlayers(players), [players]);
+  const player_board = useMemo(() => {
+    return players ? distributePlayers(players) : [];
+  }, [players]);
 
   const [playOrder, setPlayOrder] = useState(() => {
-    let order = [];
-    for (let i = 0; i < player_board[round].length / 2; i++) {
-      order.push([player_board[round][2 * i], player_board[round][2 * i + 1]]);
-    }
-    return order;
+    const savedPlayOrder = localStorage.getItem('playOrder');
+    return savedPlayOrder ? JSON.parse(savedPlayOrder) : [];
   });
 
   useEffect(() => {
-    const newTables = [];
-    for (let x = 0; x < players / 4; x++) {
-      newTables.push({ id: x + 1, team1: playOrder[x][0], team2: playOrder[x][1] });
+    if (players) {
+      const order = [];
+      for (let i = 0; i < player_board[round]?.length / 2; i++) {
+        order.push([player_board[round][2 * i], player_board[round][2 * i + 1]]);
+      }
+      setPlayOrder(order);
     }
-    setTables(newTables);
+  }, [players, player_board, round]);
+
+  useEffect(() => {
+    if (playOrder.length) {
+      const newTables = [];
+      for (let x = 0; x < players / 4; x++) {
+        newTables.push({ id: x + 1, team1: playOrder[x][0], team2: playOrder[x][1] });
+      }
+      setTables(newTables);
+    }
+  }, [playOrder]);
+
+  useEffect(() => {
+    localStorage.setItem('players', JSON.stringify(players));
+  }, [players]);
+
+  useEffect(() => {
+    localStorage.setItem('round', JSON.stringify(round));
+  }, [round]);
+
+  useEffect(() => {
+    localStorage.setItem('play_round', JSON.stringify(play_round));
+  }, [play_round]);
+
+  useEffect(() => {
+    localStorage.setItem('tables', JSON.stringify(tables));
+  }, [tables]);
+
+  useEffect(() => {
+    localStorage.setItem('isLocked', JSON.stringify(isLocked));
+  }, [isLocked]);
+
+  useEffect(() => {
+    localStorage.setItem('playOrder', JSON.stringify(playOrder));
   }, [playOrder]);
 
   const handleDragStart = (e, index, half) => {
@@ -164,20 +244,42 @@ function App() {
   };
 
   const appendRound = () => {
-    if  (!(play_round>=players-2)) {
+    if  (!(play_round >= players - 2)) {
       let newPlayRound = play_round + 1;
       setPlayRound(newPlayRound);
-      player_board.splice(round,1);
+      player_board.splice(round, 1);
       anotherRound();
     }
   }
 
+  const handlePlayerCountSubmit = (count) => {
+    setPlayers(count);
+  };
+
+  const handleReset = () => {
+    setPlayers(null);
+    setRound(0);
+    setPlayRound(0);
+    setTables([]);
+    setDraggedIndex(null);
+    setDraggedHalf(null);
+    setIsLocked(false);
+    setPlayOrder([]);
+    localStorage.clear();
+  };
+
+  if (!players) {
+    return <PlayerInput onSubmit={handlePlayerCountSubmit} />;
+  }
+
   return (
-    <div className="App">
+    <html className="App">
+      <title>Sternchenturnier</title>
       <header className="App-header flex">
+        <button className='button next-button' style={{ width: "5vw" , fontSize: "2.5vh" }} onClick={handleReset}>{"Back"}</button>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Round {play_round+1}</p>
-        <button onClick={appendRound} className='button next-button' style={{width: "5vw"}}>{">"}</button>
+        <p>Round {play_round + 1}</p>
+        <button onClick={appendRound} className='button next-button' style={{ width: "5vw" }}>{">"}</button>
       </header>
       <body className='App-body bg-black'>
         <Grid container>
@@ -201,7 +303,7 @@ function App() {
           </Grid>
         </Grid>
       </body>
-    </div>
+    </html>
   );
 }
 
