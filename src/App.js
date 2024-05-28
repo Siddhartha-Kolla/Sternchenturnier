@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import Grid from '@mui/material/Grid';
 import Inter from '@fontsource/inter';
-import styles from './styles.module.css'; 
 
 const Table = ({ team1, team2, onDragStart, onDrop, index, isLocked }) => {
   return (
@@ -163,7 +162,7 @@ function App() {
       }
       setTables(newTables);
     }
-  }, [playOrder]);
+  }, [players , playOrder]);
 
   useEffect(() => {
     localStorage.setItem('players', JSON.stringify(players));
@@ -239,9 +238,25 @@ function App() {
   };
 
   const handleRandomize = () => {
-    const shuffledOrder = shuffle([...playOrder]);
-    setPlayOrder(shuffledOrder);
-  };
+    // Step 1: Flatten the current play order to get the pairs
+    const pairs = playOrder.flat();
+  
+    // Step 2: Shuffle the pairs
+    const shuffledPairs = shuffle(pairs);
+  
+    // Step 3: Reassign shuffled pairs to the tables
+    const newTables = [];
+    for (let i = 0; i < shuffledPairs.length / 2; i++) {
+      newTables.push({
+        id: i + 1,
+        team1: shuffledPairs[2 * i],
+        team2: shuffledPairs[2 * i + 1],
+      });
+    }
+  
+    setTables(newTables);
+    setPlayOrder(newTables.map(table => [table.team1, table.team2]));
+  };    
 
   const appendRound = () => {
     if  (!(play_round >= players - 2)) {
@@ -281,7 +296,7 @@ function App() {
         <p>Runde {play_round + 1}</p>
         <button onClick={appendRound} className='button next-button' style={{ width: "5vw" }}>{">"}</button>
       </header>
-      <body className='App-body bg-black'>
+      <body className='App-body bg-black' style={{fontFamily: Inter}}>
         <Grid container>
           <Grid item xs={8} className="tables">
             {tables.map((table, index) => (

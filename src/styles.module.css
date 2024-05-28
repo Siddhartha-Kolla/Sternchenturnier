@@ -1,8 +1,0 @@
-.disabledButton {
-    cursor: not-allowed;
-    background-color: #808080;
-}
-
-.enabledButton {
-    cursor: pointer;
-}
