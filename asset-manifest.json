@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Sternchenturnier/static/css/main.037cb4d0.css",
-    "main.js": "/Sternchenturnier/static/js/main.3b5eb18d.js",
+    "main.css": "/Sternchenturnier/static/css/main.e292b720.css",
+    "main.js": "/Sternchenturnier/static/js/main.bfb005cf.js",
     "static/js/453.10f566cc.chunk.js": "/Sternchenturnier/static/js/453.10f566cc.chunk.js",
     "static/media/inter-latin-ext-400-normal.woff": "/Sternchenturnier/static/media/inter-latin-ext-400-normal.40b3b0d5e09a90fb6e3e.woff",
     "static/media/inter-latin-ext-400-normal.woff2": "/Sternchenturnier/static/media/inter-latin-ext-400-normal.0f9e8d4e940df8f6edfe.woff2",
     "static/media/inter-latin-400-normal.woff": "/Sternchenturnier/static/media/inter-latin-400-normal.08a02fd275ecea6ef662.woff",
     "static/media/inter-latin-400-normal.woff2": "/Sternchenturnier/static/media/inter-latin-400-normal.f1535355a7df553be385.woff2",
-    "static/media/logo.svg": "/Sternchenturnier/static/media/logo.eeb8ebc78eb68cdff252debdca1b583a.svg",
+    "static/media/logo.svg": "/Sternchenturnier/static/media/logo.1ea87ff40e586fe6a3a96b24ec8f3892.svg",
     "static/media/inter-cyrillic-ext-400-normal.woff": "/Sternchenturnier/static/media/inter-cyrillic-ext-400-normal.cd2ad378115f549d3c5b.woff",
     "static/media/inter-greek-400-normal.woff": "/Sternchenturnier/static/media/inter-greek-400-normal.1eeaf1d0bde712085ffc.woff",
     "static/media/inter-cyrillic-ext-400-normal.woff2": "/Sternchenturnier/static/media/inter-cyrillic-ext-400-normal.ac62c8eba7f954b48546.woff2",
@@ -19,12 +19,12 @@
     "static/media/inter-greek-ext-400-normal.woff2": "/Sternchenturnier/static/media/inter-greek-ext-400-normal.1e2b9039d9ecdbea5d80.woff2",
     "static/media/inter-vietnamese-400-normal.woff2": "/Sternchenturnier/static/media/inter-vietnamese-400-normal.5952d3d3c5df5a2f8e09.woff2",
     "index.html": "/Sternchenturnier/index.html",
-    "main.037cb4d0.css.map": "/Sternchenturnier/static/css/main.037cb4d0.css.map",
-    "main.3b5eb18d.js.map": "/Sternchenturnier/static/js/main.3b5eb18d.js.map",
+    "main.e292b720.css.map": "/Sternchenturnier/static/css/main.e292b720.css.map",
+    "main.bfb005cf.js.map": "/Sternchenturnier/static/js/main.bfb005cf.js.map",
     "453.10f566cc.chunk.js.map": "/Sternchenturnier/static/js/453.10f566cc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.037cb4d0.css",
-    "static/js/main.3b5eb18d.js"
+    "static/css/main.e292b720.css",
+    "static/js/main.bfb005cf.js"
   ]
 }
