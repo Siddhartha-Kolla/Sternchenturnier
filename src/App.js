@@ -296,7 +296,7 @@ function App() {
         <p>Runde {play_round + 1}</p>
         <button onClick={appendRound} className='button next-button' style={{ width: "5vw" }}>{">"}</button>
       </header>
-      <body className='App-body bg-black' style={{fontFamily: Inter}}>
+      <body className='App-body' style={{fontFamily: Inter}}>
         <Grid container>
           <Grid item xs={8} className="tables">
             {tables.map((table, index) => (
@@ -318,6 +318,7 @@ function App() {
           </Grid>
         </Grid>
       </body>
+      <footer className='footer-div'>© All rights reserved. From Siddhartha Kolla</footer>
     </html>
   );
 }

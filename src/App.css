@@ -225,3 +225,13 @@ code {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.footer-div {
+  margin-top: 10px;
+  display:flexbox;
+  height:100%;
+  align-items: flex-start;
+  padding: 2vh 2vw;
+  color: white;
+  text-align: left;
+}
