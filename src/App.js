@@ -136,7 +136,7 @@ function App() {
   });
 
   const player_board = useMemo(() => {
-    return players ? distributePlayers(players) : [];
+    return players ? shuffle(distributePlayers(players)) : [];
   }, [players]);
 
   const [playOrder, setPlayOrder] = useState(() => {
